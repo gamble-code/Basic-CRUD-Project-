@@ -1,0 +1,21 @@
+{% extends 'html/base.html' %}
+{% block content %}
+<div class="form-group">
+    <div class="row">
+        <div class=" center col-sm-8">
+            <form  action = "" method="post" novalidate>
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+                    {% for error in  form.non_field_errors %}
+                        <p class = "alert alert-danger"> {{error}} </p>
+                    {% endfor %}
+                {% endif %}
+                {% for field in  form %}
+                {{field.label_tag}} {{field}}{{field.errors|striptags}}
+                {% endfor %}
+                <input action = " " class = "btn btn-success btn-sm" type="submit" value="Login">
+                </form>
+        </div>
+    </div>
+{% endblock content %}
+
